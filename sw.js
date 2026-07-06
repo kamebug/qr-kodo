@@ -3,7 +3,7 @@
  * Para atualizar o app publicado, incremente CACHE_VERSION — o SW antigo
  * é descartado no evento "activate".
  */
-const CACHE_VERSION = "qrkodo-v1";
+const CACHE_VERSION = "qrkodo-v2";
 
 const APP_SHELL = [
   "./",
@@ -12,7 +12,7 @@ const APP_SHELL = [
   "./icons/icon-192.png",
   "./icons/icon-512.png",
   "./icons/icon-512-maskable.png",
-  "https://cdnjs.cloudflare.com/ajax/libs/qr-code-styling/1.6.0-rc.1/qr-code-styling.min.js",
+  "https://cdn.jsdelivr.net/npm/qr-code-styling@1.6.0-rc.1/lib/qr-code-styling.js",
   "https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&display=swap",
 ];
 
