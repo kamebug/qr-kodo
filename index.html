@@ -310,6 +310,7 @@
       <button class="btn" id="dl-svg">Baixar SVG</button>
       <button class="btn navy" id="share">Compartilhar</button>
     </div>
+    <p class="hint" id="svg-logo-warning" style="display:none; color: var(--red);">⚠ Com logo central, o SVG pode não exibir a imagem em alguns leitores — prefira PNG neste caso.</p>
     <p class="hint">Teste a leitura com a câmera do celular antes de publicar — gradientes muito claros ou logos grandes podem dificultar o escaneamento. Em fundo escuro, mantenha o fundo do QR claro: leitores esperam módulos escuros sobre base clara.</p>
   </section>
 </main>
@@ -391,6 +392,10 @@
     qr.update(buildOptions(PREVIEW_SIZE));
   }
 
+  function updateSvgWarning() {
+    $("svg-logo-warning").style.display = state.logo ? "block" : "none";
+  }
+
   /* ---- toast ---- */
   let toastTimer;
   function toast(msg) {
@@ -445,6 +450,7 @@
       state.logo = reader.result;
       $("logo-name").textContent = file.name;
       $("logo-remove").disabled = false;
+      updateSvgWarning();
       refresh();
     };
     reader.readAsDataURL(file);
@@ -454,6 +460,7 @@
     $("logo-file").value = "";
     $("logo-name").textContent = "nenhuma";
     $("logo-remove").disabled = true;
+    updateSvgWarning();
     refresh();
   });
   $("logo-size").addEventListener("input", (e) => {
@@ -479,7 +486,11 @@
 
   $("dl-svg").addEventListener("click", () => {
     exportInstance("svg").download({ name: "qr-kodo", extension: "svg" });
-    toast("SVG gerado");
+    if (state.logo) {
+      toast("SVG gerado — o logo pode não aparecer em alguns leitores");
+    } else {
+      toast("SVG gerado");
+    }
   });
 
   /* ---- share (Web Share API) ---- */
