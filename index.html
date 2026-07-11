@@ -27,6 +27,7 @@
     --radius: 14px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
+  .preview-toggle { display: none; } /* visível apenas no mobile, via media query abaixo */
   body {
     font-family: 'Inter', sans-serif;
     background: var(--bg);
@@ -169,7 +170,6 @@
 
   /* preview column */
   .preview-col { position: sticky; top: 22px; align-self: start; }
-  .preview-toggle { display: none; }
   .viewfinder {
     position: relative;
     background: var(--panel);
