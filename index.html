@@ -59,8 +59,9 @@
     padding: 22px;
   }
   @media (max-width: 820px) {
-    main { grid-template-columns: 1fr; }
-    .preview-col { order: -1; }
+    main { grid-template-columns: 1fr; padding: 14px; gap: 14px; }
+    .preview-col { order: -1; position: static; }
+    .viewfinder { padding: 18px; min-height: 220px; }
   }
 
   .card {
@@ -156,6 +157,18 @@
   .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
   .actions .btn { flex: 1; min-width: 120px; }
   .hint { font-size: 0.78rem; color: var(--muted); margin-top: 10px; line-height: 1.5; }
+  details.tips { margin-top: 12px; }
+  details.tips summary {
+    cursor: pointer; font-size: 0.82rem; font-weight: 600;
+    color: var(--steel); list-style: none; display: flex;
+    align-items: center; gap: 6px; padding: 8px 2px;
+  }
+  details.tips summary::-webkit-details-marker { display: none; }
+  details.tips summary::before {
+    content: "▸"; font-size: 0.7rem; transition: transform 0.15s;
+  }
+  details.tips[open] summary::before { transform: rotate(90deg); }
+  details.tips .hint { margin-top: 6px; }
 
   .toast {
     position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(80px);
@@ -167,14 +180,6 @@
     .toast { transition: none; }
   }
 </style>
-<!-- Google Analytics — mesmo ID usado no Onion Payroll -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-GTLLQ1WZGN"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-GTLLQ1WZGN');
-</script>
 </head>
 <body>
 
@@ -319,7 +324,10 @@
       <button class="btn navy" id="share">Compartilhar</button>
     </div>
     <p class="hint" id="svg-logo-warning" style="display:none; color: var(--red);">⚠ Com logo central, o SVG pode não exibir a imagem em alguns leitores — prefira PNG neste caso.</p>
-    <p class="hint">Teste a leitura com a câmera do celular antes de publicar — gradientes muito claros ou logos grandes podem dificultar o escaneamento. Em fundo escuro, mantenha o fundo do QR claro: leitores esperam módulos escuros sobre base clara.</p>
+    <details class="tips">
+      <summary>Dicas de leitura e contraste</summary>
+      <p class="hint">Teste a leitura com a câmera do celular antes de publicar — gradientes muito claros ou logos grandes podem dificultar o escaneamento. Em fundo escuro, mantenha o fundo do QR claro: leitores esperam módulos escuros sobre base clara.</p>
+    </details>
   </section>
 </main>
 
