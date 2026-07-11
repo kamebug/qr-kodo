@@ -3,7 +3,7 @@
  * Para atualizar o app publicado, incremente CACHE_VERSION — o SW antigo
  * é descartado no evento "activate".
  */
-const CACHE_VERSION = "qrkodo-v7";
+const CACHE_VERSION = "qrkodo-v8";
 
 const APP_SHELL = [
   "./",
