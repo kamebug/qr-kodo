@@ -63,6 +63,13 @@
     .preview-col { order: -1; position: static; }
     .viewfinder { padding: 18px; min-height: 220px; }
   }
+  @media (max-width: 480px) {
+    main { padding: 10px; gap: 10px; }
+    .viewfinder { padding: 10px; min-height: 160px; border-radius: 10px; }
+    .card { padding: 14px; margin-bottom: 10px; }
+    .actions { gap: 8px; margin-top: 10px; }
+    .actions .btn { min-width: 100px; padding: 9px 10px; font-size: 0.82rem; }
+  }
 
   .card {
     background: var(--panel);
